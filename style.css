@@ -1,0 +1,416 @@
+    </script>
+<style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+                word-wrap: break-word;
+                color: black;
+                background-color: black;
+                font-family: "Press Start 2P", cursive;
+            }
+ 
+            /**gets rid of iframe**/
+            body > iframe:first-child {
+                display: none !important;
+            }
+ 
+            a {
+                text-decoration: none;
+            }
+ 
+            #container {
+                position: absolute;
+                width: 80%;
+                height: 80%;
+                top: 10%;
+                left: 10%;
+                background-color: black;
+                background-image: url(https://static.tumblr.com/bkdoxe7/8ysqwxt6g/pixel-gif-stars-2.gif);
+                background-repeat: repeat;
+                border-radius: 65px;
+            }
+ 
+            /**line effect across screen**/
+            #container:after {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, rgba(0, 0, 0, 0.25)));
+                background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.25) 0);
+                background-size: 100% 4px;
+                opacity: 0.5;
+                z-index: 100;
+                pointer-events: none;
+            }
+ 
+            #title {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: 90;
+                transform: translate(-50%, calc(-50% - 30px));
+                color: white;
+                width: 700px;
+                text-align: center;
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Old versions of Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none;
+            }
+ 
+            #title h1 {
+                color: white;
+                font-size: 58px;
+                animation: glow 3s ease-in-out infinite alternate;
+                -webkit-animation: glow 3s ease-in-out infinite alternate;
+                -moz-animation: glow 3s ease-in-out infinite alternate;
+            }
+ 
+            @-webkit-keyframes glow {
+                from {
+                    text-shadow: 0 0 5px #ff006c, 0 0 10px #ff006c, 0 0 15px #ff006c, 0 0 20px #ff417d, 0 0 35px #ff417d, 0 0 40px #ff417d, 0 0 50px #ff417d, 0 0 75px #ff417d;
+                }
+                to {
+                    text-shadow: 0 0 10px #ff006c, 0 0 20px #ff006c, 0 0 30px #ff006c, 0 0 40px #ff417d, 0 0 70px #ff417d, 0 0 80px #ff417d, 0 0 100px #ff417d, 0 0 150px #ff417d;
+                }
+            }
+ 
+            .subtitle1 {
+                position: absolute;
+                bottom: 90%;
+                color: #00ff38;
+                font-family: inherit;
+                font-size: 32px;
+                width: 700px;
+                height: auto;
+            }
+ 
+            .subtitle2 {
+                position: absolute;
+                top: 90%;
+                color: #ccc;
+                font-family: inherit;
+                font-size: 16px;
+                width: 700px;
+                height: auto;
+            }
+ 
+            .navbar {
+                position: absolute;
+                top: 0;
+                display: flex;
+                justify-content: space-evenly;
+                overflow: hidden;
+                width: 100%;
+                height: 75px;
+                z-index: 50;
+            }
+ 
+            /* Style the buttons that are used to open the tab content */
+            .navbar button {
+                background-color: inherit;
+                border: none;
+                outline: none;
+                cursor: pointer; /**CHANGE***/
+                padding: 14px 5px;
+                text-transform: uppercase;
+            }
+ 
+            .navbar button.active p {
+                text-decoration: underline 3px white;
+                text-shadow: 0 0 5px #ff006c, 0 0 10px #ff006c, 0 0 15px #ff006c, 0 0 20px #ff417d, 0 0 25px #ff417d;
+            }
+ 
+            .navbar button p,
+            .navbar button a {
+                font-family: "Press Start 2P", cursive;
+                display: inline-block;
+                font-size: 16px;
+                color: white;
+                transition: all 0.5s ease;
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -ms-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+            }
+ 
+            .navbar button p:hover,
+            .navbar button a:hover {
+                text-shadow: 0 0 5px #ff006c, 0 0 10px #ff006c, 0 0 15px #ff006c, 0 0 20px #ff417d, 0 0 25px #ff417d;
+            }
+ 
+            /* Style the tab content */
+            .tabcontent {
+                display: none;
+                position: absolute;
+                top: 75px;
+                height: calc(100% - 105px); /* note: takes up space behind navbar */
+                width: 100%;
+                animation: fadeIn 1s;
+                color: white;
+                font-size: 13px;
+                overflow: hidden;
+                overflow-y: scroll;
+                padding-bottom: 30px;
+                -ms-overflow-style: none; /* Internet Explorer 10+ */
+                scrollbar-width: none; /* Firefox */
+            }
+ 
+            .tabcontent::-webkit-scrollbar {
+                display: none; /* Safari and Chrome */
+            }
+ 
+            .tabcontent table {
+                margin: 0 auto;
+                width: 95%;
+                border-collapse: separate;
+                border-spacing: 4px;
+                border-radius: 0;
+                border: 2px solid black;
+                background: none;
+            }
+ 
+            .tabcontent th {
+                border: 0;
+                margin-bottom: 2px;
+                text-align: center;
+                vertical-align: middle;
+                padding: 0.5em;
+                background: black;
+                padding: 12px;
+            }
+ 
+            .tabcontent a {
+                color: #00ff38;
+                text-decoration: underline;
+            }
+ 
+            .tabcontent a:hover {
+                color: white;
+            }
+ 
+            .col-number,
+            .follow,
+            .message {
+                width: 0;
+            }
+ 
+            .avatar {
+                width: 0;
+                padding-top: 2px;
+                padding-bottom: 2px;
+            }
+ 
+            .avatar img {
+                border-radius: 50%;
+                height: 37px;
+                width: 37px;
+            }
+ 
+            .name {
+                word-break: break-all;
+                min-width: 55px;
+                max-width: 250px;
+            }
+ 
+            .catchphrase {
+                min-width: 143px;
+                word-break: break-word;
+            }
+ 
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+ 
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+ 
+            .emoji {
+                position: relative;
+                font-family: inherit;
+                font-size: 16px;
+                display: inline-block;
+                line-height: 16px;
+                top: -3px;
+                margin-right: 7px;
+            }
+ 
+            .emoji img {
+                position: relative;
+                width: 20px;
+                height: 20px;
+                display: inline-block;
+                margin-right: 4px;
+                top: 4px;
+            }
+ 
+            .number {
+                font-family: "Press Start 2P", cursive;
+                font-size: 16px;
+                color: #00ff38;
+                margin-left: 8px;
+            }
+ 
+            #play {
+                text-transform: uppercase;
+                background-color: #ffdd57;
+                border-radius: 290486px;
+                color: rgba(0, 0, 0, 0.7);
+                position: absolute;
+                top: calc(90% + 75px);
+                font-family: inherit;
+                font-size: 16px;
+                padding: 12px;
+                width: max-content;
+                height: auto;
+                display: block;
+                left: 50%;
+                -webkit-transform: translateX(-50%);
+                transform: translateX(-50%);
+                padding-left: 18px;
+                cursor: pointer;
+            }
+ 
+            #back {
+                margin-left: 15px;
+            }
+ 
+            canvas {
+                display: block;
+                height: 100%;
+                width: 100%;
+                border-radius: 65px;
+                animation: fadeIn 1s;
+            }
+ 
+            .dialogue__content h1 {
+                font-size: 3rem;
+                margin-bottom: 0.5em;
+                line-height: 1.2em;
+                color: white;
+                animation: glow 3s ease-in-out infinite alternate;
+                -webkit-animation: glow 3s ease-in-out infinite alternate;
+                -moz-animation: glow 3s ease-in-out infinite alternate;
+            }
+ 
+            .dialogue__content ul {
+                margin-bottom: 2rem;
+            }
+ 
+            .dialogue__content li {
+                color: #00ff38;
+                font-size: 0.8rem;
+                margin-bottom: 1em;
+                text-transform: uppercase;
+                list-style-type: none;
+            }
+ 
+            .dialogue__content button {
+                border-radius: 5px;
+                appearance: none;
+                background-color: white;
+                border: 1px solid white;
+                cursor: pointer;
+                font-family: inherit;
+                font-size: 1rem;
+                outline: none;
+                padding: 0.7em 0.85em 0.6em 1em;
+                text-transform: uppercase;
+                transition: all 0.2s linear;
+            }
+ 
+            .dialogue__content button:hover,
+            .dialogue__content button:active {
+                background-color: transparent;
+                border: 1px solid #00ff38;
+                color: #00ff38;
+            }
+ 
+            .dialogue {
+                z-index: 20;
+                align-items: center;
+                background-color: transparent;
+                bottom: 0;
+                display: flex;
+                justify-content: center;
+                left: 0;
+                opacity: 1;
+                position: fixed;
+                right: 0;
+                text-align: center;
+                top: 0;
+                transform: translateX(0);
+                animation: fadeIn 1s;
+            }
+ 
+            .dialogue--hidden {
+                $duration: 0.3s;
+                opacity: 0;
+                transform: translateX(-100vw);
+                transition: opacity $duration linear 0s, transform 0s linear $duration;
+            }
+ 
+            .dialogue__content {
+                max-width: 31.25rem; // 500px / 16px
+                padding: 18px;
+            }
+ 
+            .key {
+                border: 1px solid white;
+                border-radius: 5px;
+                display: inline-block;
+                padding: 0.8em;
+                border-color: white;
+                color: white;
+            }
+ 
+            .key--arrow {
+                font-size: 1.8rem;
+                padding: 0.35em 0.1em 0.6em;
+                position: relative;
+                line-height: 0.3;
+                top: 0.05em;
+            }
+ 
+            .hud {
+                box-sizing: border-box;
+                display: flex;
+                justify-content: flex-start;
+                margin-top: 0;
+                margin-left: 15px;
+                list-style-type: none;
+                color: #00ff38;
+                opacity: 1;
+                padding: 1rem;
+                position: fixed;
+                transition: opacity 0.07s linear 0.5s;
+                width: 100%;
+            }
+ 
+            .hud--hidden {
+                opacity: 0;
+            }
+ 
+            .hud__score {
+                margin: 0;
+            }
+        </style>
+    </head>
+ 
